@@ -1,0 +1,34 @@
+<?php
+    $con = mysql_connect("localhost","hisab","Nh9y4gXs44","abc123");
+  
+  if (mysqli_connection_error())
+      {
+      echo "Failed to connect to MySQL :" .mysqli_connect_error();
+      } else
+	{
+	mysqli_set_charset($con,utf8);
+	}
+
+if( isset($_POST['id']&&($_POST['id']!=''))
+	{
+		$id =$_POST['id'];
+		$image_name =$_POST['image_name'];
+		$bitmap =$_POST['bitmap'];
+
+
+$insert_query ="INSERT INTO 'tbl_image'('id','name','bitmap')
+ VALUES ('".$id."','".$image_name."','".$bitmap."')";
+
+if($con->query($insert_query)== TRUE){
+		echo"New Image Save Success";
+		
+		} else
+{
+echo "Error: ".$sql.$con->error;
+}
+else{
+echo "ID is Missing !";
+}
+	}
+
+    ?> 
